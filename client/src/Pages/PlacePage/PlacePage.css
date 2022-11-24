@@ -1,0 +1,58 @@
+body{
+  font-family:Verdana, Geneva, Tahoma, sans-serif
+}
+.image-Carousel{
+    width: 75vw;
+    height: 50vh;
+}
+/* .BorderBox{
+  position: absolute;
+  background-color:  rgb(46, 67, 46);
+  z-index: -1;
+} */
+
+/* .border-nav{
+  position: absolute;
+  width: 100vw;
+  height: 12vh;
+  background-color:  rgb(46, 67, 46);
+  z-index: 3;
+} */
+
+ .title{
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  right: 20%;
+   margin: auto;
+  color: aliceblue;
+  z-index: 2;
+}
+.text-container{
+  margin-top: 10%;
+}
+.place-text{
+  color: #004b3f;
+}
+.title-page-place{
+  font-size: 50px;
+}
+.text-page-place{
+  width: 40%;
+}
+img{
+  position: relative;
+  width: 100vw;
+  z-index: 1;
+}
+/* .place-page-container{
+  background-image: linear-gradient(rgb(0, 39, 0),rgb(85, 120, 85));
+} */
+
+
+@media screen and (max-width: 400px) {
+  .text-page-place{
+    margin-top: 20px;
+    width: 70vw;
+  }
+}

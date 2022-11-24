@@ -1,0 +1,41 @@
+
+body { margin: 0; padding: 0; overflow-x: hidden;}
+#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+.home-page-container{
+    background-image: linear-gradient( rgb(39, 53, 39),  rgb(45, 64, 45));
+}
+
+
+    #map {
+        position: fixed;
+        width: 50%;
+    }
+    .features {
+        font-family: sans-serif;
+        overflow-y: scroll;
+        background-color: #fafafa;
+    }
+    section {
+        padding: 25px 50px;
+        line-height: 25px;
+        border-bottom: 1px solid #ddd;
+        opacity: 0.25;
+        font-size: 13px;
+    }
+    section.active {
+        opacity: 1 ;
+    }
+    section:last-child {
+        border-bottom: none;    
+        margin-bottom: 200px;
+    }
+/* 
+    .image-container
+    {  
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100vw;
+        height: 100vh;
+        
+    } */
+   

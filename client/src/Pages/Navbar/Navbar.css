@@ -1,0 +1,15 @@
+body{min-height:200vh;}
+.transition{
+  transition:500ms ease-out;
+  background:transparent;
+}
+.scrolled{
+  background-color: rgb(46, 67, 46);
+}
+.image-bg{
+    background-color: aliceblue;
+    border-radius: 50px;
+}
+.image{
+    width: 35px;
+}
