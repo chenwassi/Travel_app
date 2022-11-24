@@ -10,6 +10,12 @@ app.use(express.json())
 const userRouter = require('./router/userRouter')
 app.use('/login',userRouter)
 
+const placesRouter = require('./router/placesRouter')
+app.use('/places',placesRouter)
+
+const commentsRouter = require('./router/commentsRouter')
+app.use('/comments',commentsRouter)
+
 app.listen(PORT,()=>{
-    console.log(`app is listeing to ${PORT}`);
+    console.log(`app is listeing to http://localhost:${PORT} `);
 })
