@@ -8,18 +8,22 @@ import { useEffect } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import { useState } from 'react';
 import Navbar from '../Navbar/Navbar'
-import MapPath from '../../components/Login/MapPath/MapPath'
+// import MapPath from '../../components/Login/MapPath/MapPath'
 import MyVerticallyCenteredModal from '../AddComment/AddComment';
 import ReactPlayer from 'react-player'
+import PlaceInfo from '../PlaceInfo/PlaceInfo';
+import Loading from '../../components/Login/Loading/Loading';
 
 export default function PlacePage() {
     const navigate = useNavigate()
     const [modalShow, setModalShow] =useState(false);
-    const [placeData ,setPlaceData] = useState({image:[''],info:'',location:'',name:'',video:'',text:''})
+    const [placeData ,setPlaceData] = useState({image:[''],info:'',location:'',name:'',video:'',text:'',ways:'',centers:''})
     const [commentsData ,setCommentsData] = useState([])
+    const [displayInfo ,setDisplayInfo] = useState(true)
+    const [displayCenters,setDisplayCenters] = useState(false)
+    const [displayWays ,setDisplayWays] = useState(false)
+
     const id = sessionStorage.getItem('placeId')
-
-
     const findById = async ()=>{
         const {data} = await axios.get(`http://localhost:8800/places/${id}`)
         setPlaceData(data);
@@ -35,7 +39,7 @@ export default function PlacePage() {
     },[commentsData])
   return (
       <div className='place-page-container'>
-        {/* <Navbar/> */}
+        <Navbar/>
         <div className='player d-md-block d-none'>
           <div className='BorderBox  w-100 h-100'></div>
           <div className='border-nav'></div>
@@ -44,7 +48,7 @@ export default function PlacePage() {
            <h6>{placeData.info}</h6>
           </div>
           <div className='player-video'>
-            {placeData?.video?<ReactPlayer muted={true} controls={false} playing={true} loop={true} width={'100vw'}height={'80vh'} url={placeData?.video}/>:<img className='image-bg'src={placeData?.image[1]} width={'100vw'} height={'100vh'}/>}
+            {placeData?.video?<ReactPlayer muted={true} controls={false} playing={true} loop={true} width={'100vw'}height={'80vh'} url={placeData?.video}/>:<img className='image-bg'src={placeData?.image[1]} width={'80'} height={'100vh'}/>}
         </div>
         </div>
         <div className='Carousel w-100 m-auto  d-md-none d-flex'>
@@ -63,15 +67,22 @@ export default function PlacePage() {
           }
         )}
     </Carousel>
-        </div>
-    <div className=''>
-    <div className='text-container d-flex flex-md-row flex-column-reverse justify-content-around  align-items-md-start align-items-center '>
-    <div className='text-page-place fs-5 '> <p>{placeData.text}</p></div>
-      <h2 className='title-page-place'>הכירו את 
-      <div className='place-text'>{placeData.name}</div>
-      <div><MapPath/></div>
-      </h2>
     </div>
+    <div className=''>
+
+  <div className ='information-Section col-12 border border-5 rounded'>
+        <div className='d-flex flex-column align-items-center col-md-4 col-6 left-information-Section'>
+            <h3 className='box box-title border border-2' onClick={()=>{setDisplayInfo(true);setDisplayCenters(false);setDisplayWays(false)}}> הכירו את {placeData.name}</h3>
+            <h3 className='box box-title border border-2' onClick={()=>{setDisplayCenters(true);setDisplayInfo(false);setDisplayWays(false)}}>מוקדי עניין</h3>
+            <h3 className='box box-title border border-2' onClick={()=>{setDisplayWays(true);setDisplayInfo(false);setDisplayCenters(false)}}>דרכי הגעה </h3>
+        </div>
+        <div className='col-md-4 col-6 right-information-Section centers-dataabs'>
+        <div>{displayInfo?placeData.info:null}
+        {displayCenters?placeData.centers.map((val,i)=><ul key={i}><li>{val}</li></ul>):null}
+        {displayWays?placeData.ways:null}</div>
+        </div>
+    </div>
+
         {/* <h5> Unread comments(0) </h5> */}
        {commentsData?.map(({_id,placeId,userName,text})=>{
         if(placeId == id){
@@ -81,15 +92,14 @@ export default function PlacePage() {
         </div>
         <div>
 
-    <Button variant="primary" onClick={() => setModalShow(true)}>
-    Launch vertically centered modal
+    <Button variant="primary m-5 btn btn-success" onClick={() => setModalShow(true)}>
+    הוספת תגובה
     </Button>
-
     <MyVerticallyCenteredModal
       show={modalShow}
       onHide={() => setModalShow(false)}/>
-  
     </div>
+  <Loading/>
     </div>
   )
 }

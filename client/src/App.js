@@ -16,9 +16,9 @@ function App() {
     <div className="App">
       <BrowserRouter>
       <Routes>
-      <Route path='/' element= {<Login/>}></Route>
-      <Route path='/HomePage' element={ <HomeImage/>}></Route>
-      <Route path='/Home' element={<HomePage/>}></Route>
+      <Route path='/' element= {<HomeImage/>}></Route>
+      <Route path='/HomePage' element={ <HomePage/>}></Route>
+      {/* <Route path='/Home' element={<HomePage/>}></Route> */}
       <Route path='/Map/:lon/:lat' element={<Mapage/>}></Route>
       <Route path='/addPlace' element={<AddPlace/>}></Route>
       <Route path='/PlacePage' element={ <PlacePage/>}></Route>

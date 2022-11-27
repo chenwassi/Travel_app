@@ -1,10 +1,11 @@
-body{min-height:200vh;}
+body{
+  min-height:200vh;}
 .transition{
-  transition:500ms ease-out;
+  transition:500ms ease-in-out;
   background:transparent;
 }
 .scrolled{
-  background-color: rgb(46, 67, 46);
+  background-color:#004b3f;
 }
 .image-bg{
     background-color: aliceblue;
@@ -13,3 +14,10 @@ body{min-height:200vh;}
 .image{
     width: 35px;
 }
+.user-logout{
+  background-color: #4a9f91;  ;
+  border-radius: 40px;
+}
+/* #dropdown-basic{
+  width: 30px;
+} */

@@ -13,7 +13,8 @@ const nameFromLocal = localStorage.getItem('userName')
   const data  = await axios.delete(`http://localhost:8800/comments/${id}`)
   return data
  }
-  }
+}
+
   return (
       <div className="container mt-5">
         <div className="row  d-flex justify-content-center">
@@ -44,15 +45,16 @@ const nameFromLocal = localStorage.getItem('userName')
               </div>
 
               <div className="action ">
-                <div className="reply px-4 d-flex justify-content-end ">
-                  <button className="m-2" onClick={()=>deleteComment()}><FaTrash/></button>
-                  <button className="m-2"><GrEdit/></button>
+                <div className="reply px-4 d-flex ">
+                  <button className="m-2" onClick={()=>deleteComment()}>{name==nameFromLocal?<FaTrash/>:null}</button>
+                  <button className="m-2">{name==nameFromLocal?<GrEdit/>:null}</button>
                 </div>
 
-                <div className="icons align-items-center">
+                {/* <div className="icons align-items-center">
                   <i className="fa fa-star text-warning"></i>
                   <i className="fa fa-check-circle-o check-icon"></i>
-                </div>
+                </div> */}
+
               </div>
             </div>
           </div>

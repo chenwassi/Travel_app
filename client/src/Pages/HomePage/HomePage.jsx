@@ -6,6 +6,7 @@ import CardComponent from '../../components/Login/cardsComponents/card'
 import { useNavigate } from 'react-router-dom'
 import Form from 'react-bootstrap/Form';
 import Navbar from '../Navbar/Navbar'
+import ReactPlayer from 'react-player'
 import Button from 'react-bootstrap/Button';
 
 
@@ -36,6 +37,8 @@ export default function HomePage() {
   return (
     <div id='homePage'>
       <Navbar/>
+      <ReactPlayer youtube muted={true} controls={false} playing={true} loop={true} width={'100vw'}height={'80vh'} url={'https://www.youtube.com/watch?v=LER7lcnzoDU&t=233s&ab_channel=BeautifulRelaxation'}/>
+
        <Form className="d-flex w-50 m-auto mt-5">
             <Form.Control
               type="search"

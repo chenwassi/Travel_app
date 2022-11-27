@@ -5,13 +5,15 @@ import Navbar from 'react-bootstrap/Navbar';
 import { useNavigate } from 'react-router-dom';
 import '../Navbar/Navbar.css'
 import logo from '../Navbar/logo.png'
+import { FaUserAlt } from 'react-icons/fa';
+import Dropdown from 'react-bootstrap/Dropdown';
 
 function NavbarContainer() {
   const [chagneCss,setChangeCss]= useState(false)
   const navigate = useNavigate()
   const changeValueScroll =()=>{
     const scrollValue = document.documentElement.scrollTop
-    if(scrollValue>200){
+    if(scrollValue>50){
       setChangeCss(true)
     }
     else{
@@ -19,24 +21,33 @@ function NavbarContainer() {
     }
     
   };
-  console.log(chagneCss);
   window.addEventListener('scroll',changeValueScroll)
   return (
-    <Navbar className={chagneCss == true?"navbar fixed-top navbar-expand-lg scrolled transition":""} expand="lg" >
-      <Container fluid>
-        <Navbar.Brand><div className='image-bg'><img className='image' src={logo}></img></div></Navbar.Brand>
+    <Navbar className={chagneCss?"navbar fixed-top navbar-expand-lg scrolled transition":"transition"} expand="lg" >
+      <Container fluid className='d-flex flex-row-reverse'>
+          <Navbar.Brand><div className='image-bg'><img className='image' src={logo}></img></div></Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll"/>
-        <Navbar.Collapse id="navbarScroll">
+        <Navbar.Collapse id="navbarScroll ">
           <Nav
             className="me-auto my-2 my-lg-0"
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link className='text-light' onClick={()=>navigate('/HomePage')}>Home</Nav.Link>
-            <Nav.Link className='text-light' onClick={()=>navigate('/addPlace')}>Add place</Nav.Link>
-            <Nav.Link className='text-light' onClick={()=>navigate('/PlacePage')}>PlacePage</Nav.Link>  
+      <Dropdown >
+      <Dropdown.Toggle className='user-logout text-light d-md-flex d-none align-items-center' id="dropdown-basic">
+        <div><FaUserAlt/></div>
+       {localStorage.getItem('name')}
+      </Dropdown.Toggle>
+      <Dropdown.Menu>
+        <Dropdown.Item onClick={()=>{localStorage.clear();navigate('/')}}>Log out</Dropdown.Item>
+      </Dropdown.Menu>
+      </Dropdown>
           </Nav>
-          <Nav.Link className='text-light' >welcome,{localStorage.getItem('name')}</Nav.Link> 
+          <div className='d-md-flex justify-content-md-around align-items-md-center w-25'>
+            <Nav.Link className='text-light' onClick={()=>navigate('/addPlace')}>מפה</Nav.Link>
+            <Nav.Link className='text-light' onClick={()=>navigate('/PlacePage')}>עוד משהו</Nav.Link>  
+            <Nav.Link className='text-light' onClick={()=>navigate('/HomePage')}>דף הבית</Nav.Link>
+          </div>
         </Navbar.Collapse>
       </Container>
     </Navbar>

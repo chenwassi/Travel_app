@@ -1,5 +1,6 @@
 
-body { margin: 0; padding: 0; overflow-x: hidden;}
+body { margin: 0; padding: 0; overflow-x: hidden;  background-color: #abb8c3;
+}
 #map { position: absolute; top: 0; bottom: 0; width: 100%; }
 .home-page-container{
     background-image: linear-gradient( rgb(39, 53, 39),  rgb(45, 64, 45));
