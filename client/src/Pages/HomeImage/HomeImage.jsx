@@ -1,15 +1,13 @@
 import React,{useState} from 'react'
 import { useNavigate } from 'react-router-dom'
-import {Link} from 'react-scroll'
-import HomePage from '../HomePage/HomePage'
 import Login from '../Login/Login'
 import './HomeImage.css'
 export default function HomeImage() {
   const [modalShow, setModalShow] =useState(false);
   const nameFromLocal = localStorage.getItem('name')
-const navi = useNavigate()
+const navigate = useNavigate()
     return ( 
-  <div>
+  <div className='login-Image'>
     <div className='home-background'>
     <div className='home-img m-auto '>
     <h1 className='title-HomeImg'>NEVER STOP EXPLORING .</h1>
@@ -20,7 +18,7 @@ const navi = useNavigate()
     </button>
     </div>
     </div>
-      {nameFromLocal?navi('/HomePage'):null}
+      {nameFromLocal?navigate('/HomePage'):null}
   </div>
     )
 }

@@ -18,8 +18,7 @@ export default function MapPage() {
 
   console.log(lon,lat);
   return (
-    <div className="Map-page">
-    <Map 
+    <Map className="Map-page"
          mapboxAccessToken={process.env.REACT_APP_MAPBOX}
         style={{
           width: "100vw",
@@ -38,6 +37,5 @@ export default function MapPage() {
         <GeolocateControl  position="top-left" onGeolocate={true}/>
         <Geolocoder/>
       </Map>
-    </div>
   );
 }

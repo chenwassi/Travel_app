@@ -1,5 +1,7 @@
+.login-Image{
+  overflow-y: hidden;
+}
 .home-background{
-    /* background: url('https://www.unlimitedvips.com/wp-content/uploads/2016/12/israel2.jpg') no-repeat left top, linear-gradient(#191418, #d13531); */
    background-image: url('https://www.unlimitedvips.com/wp-content/uploads/2016/12/israel2.jpg');
     background-repeat: no-repeat;
     background-size: cover;
@@ -22,4 +24,3 @@ font-weight: '80px';
       color: aliceblue;
     }
   }
-/* https://www.workaway.info/gfx/2015/content/frontpage/header_frontpage_5.jpg */

@@ -50,11 +50,6 @@ const nameFromLocal = localStorage.getItem('userName')
                   <button className="m-2">{name==nameFromLocal?<GrEdit/>:null}</button>
                 </div>
 
-                {/* <div className="icons align-items-center">
-                  <i className="fa fa-star text-warning"></i>
-                  <i className="fa fa-check-circle-o check-icon"></i>
-                </div> */}
-
               </div>
             </div>
           </div>

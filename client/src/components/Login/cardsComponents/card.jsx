@@ -6,19 +6,19 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
+import { height } from '@mui/system';
 
 export default function CardComponent({image,info,name,location,coords}) {
     const navigate= useNavigate()
     const [cordsState,setCordsState] = useState([])
-console.log(cordsState);
 const scroll = ()=>{
 window.scroll({top:0,behavior:'smooth'})
 }
  return(
   <Card sx={{ maxWidth: 300}} style={{height:'100%'}} >
       <CardMedia 
+        style={{width:'400px',height:'300px'}}
         component="img"
-        height="100"
         image={image}
         alt={location}
       />

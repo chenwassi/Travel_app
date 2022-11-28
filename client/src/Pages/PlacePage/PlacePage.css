@@ -2,34 +2,29 @@ body{
   background-color: #eaeff4;
   font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-size: large;
+  overflow-x: hidden;
 }
 
 .image-Carousel{
     width: 75vw;
     height: 50vh;
 }
-/* .BorderBox{
-  position: absolute;
-  background-color:  rgb(46, 67, 46);
-  z-index: -1;
-} */
-
-/* .border-nav{
-  position: absolute;
-  width: 100vw;
-  height: 12vh;
-  background-color:  rgb(46, 67, 46);
-  z-index: 3;
-} */
 
  .title{
   position: absolute;
+  /* background-color: #4a9f91; */
   top: 50%;
   left: 20%;
   right: 20%;
    margin: auto;
   color: aliceblue;
   z-index: 2;
+}
+.title h1 {
+  font-size: 60px;
+}
+.title h6 {
+  font-size: 20px;
 }
 .text-container{
   margin-top: 10%;
@@ -48,13 +43,11 @@ img{
   width: 100vw;
   z-index: 1;
 }
-/* .place-page-container{
-  background-image: linear-gradient(rgb(0, 39, 0),rgb(85, 120, 85));
-} */
+
 .information-Section{
   display: flex;
   margin: auto;
-  padding: 40px;
+  padding: 20px;
   width: 75vw;
   flex-direction:row-reverse;
   justify-content:space-around;
@@ -66,6 +59,9 @@ img{
 .left-information-Section{
   border-radius: 10px;
   color: whitesmoke;
+}
+.right-information-Section h3{
+  font-weight: bolder;
 }
 .box-title{
   border-radius: 10px;
@@ -82,10 +78,6 @@ img{
   background-color:#4a9f91;  
   width: 24vw;
 }
-
-/* .centers-data{
-  overflow-y: scroll; 
-} */
 
 @media screen and (max-width: 400px) {
   .text-page-place{

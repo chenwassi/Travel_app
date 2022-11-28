@@ -8,10 +8,10 @@ import { useEffect } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import { useState } from 'react';
 import Navbar from '../Navbar/Navbar'
-// import MapPath from '../../components/Login/MapPath/MapPath'
+import Footer from "../Footer/Footer";
 import MyVerticallyCenteredModal from '../AddComment/AddComment';
 import ReactPlayer from 'react-player'
-import PlaceInfo from '../PlaceInfo/PlaceInfo';
+// import PlaceInfo from '../PlaceInfo/PlaceInfo';
 import Loading from '../../components/Login/Loading/Loading';
 
 export default function PlacePage() {
@@ -44,15 +44,15 @@ export default function PlacePage() {
           <div className='BorderBox  w-100 h-100'></div>
           <div className='border-nav'></div>
           <div className='title'>
-           <h1>{placeData.name}</h1>
-           <h6>{placeData.info}</h6>
+          <h1>{placeData.name}</h1>
+          <h6>{placeData.info}</h6>
           </div>
           <div className='player-video'>
-            {placeData?.video?<ReactPlayer muted={true} controls={false} playing={true} loop={true} width={'100vw'}height={'80vh'} url={placeData?.video}/>:<img className='image-bg'src={placeData?.image[1]} width={'80'} height={'100vh'}/>}
+            {placeData?.video?<ReactPlayer muted={true} controls={false} playing={true} loop={true} width={'100vw'}height={'80vh'} url={placeData?.video}/>:<img className='image-bg'src={placeData?.image[1]} width={'80vw'} height={'60vh'}/>}
         </div>
         </div>
         <div className='Carousel w-100 m-auto  d-md-none d-flex'>
-        <Carousel interval={2000} indicators={false} controls={false} fade >
+        <Carousel interval={2000} indicators={false} controls={false} fade>
         {placeData?.image.map((item,i)=>{
             return(
             <Carousel.Item key={i}>
@@ -70,14 +70,14 @@ export default function PlacePage() {
     </div>
     <div className=''>
 
-  <div className ='information-Section col-12 border border-5 rounded'>
-        <div className='d-flex flex-column align-items-center col-md-4 col-6 left-information-Section'>
-            <h3 className='box box-title border border-2' onClick={()=>{setDisplayInfo(true);setDisplayCenters(false);setDisplayWays(false)}}> הכירו את {placeData.name}</h3>
+  <div className ='information-Section d-flex flex-column flex-md-row-reverse col-12 border border-5 rounded '>
+        <div className='d-flex flex-md-column flex-row justify-content-around align-items-center col-md-4 col-12 left-information-Section'>
+            <h3 className='box box-title border border-2' onClick={()=>{setDisplayInfo(true);setDisplayCenters(false);setDisplayWays(false)}}> הכירו את </h3>
             <h3 className='box box-title border border-2' onClick={()=>{setDisplayCenters(true);setDisplayInfo(false);setDisplayWays(false)}}>מוקדי עניין</h3>
             <h3 className='box box-title border border-2' onClick={()=>{setDisplayWays(true);setDisplayInfo(false);setDisplayCenters(false)}}>דרכי הגעה </h3>
         </div>
-        <div className='col-md-4 col-6 right-information-Section centers-dataabs'>
-        <div>{displayInfo?placeData.info:null}
+        <div className='right-information-Section col-md-4  col-12 centers-dataabs'>
+        <div>{displayInfo?<div><h3>{placeData.name}</h3>{placeData.info}</div>:null}
         {displayCenters?placeData.centers.map((val,i)=><ul key={i}><li>{val}</li></ul>):null}
         {displayWays?placeData.ways:null}</div>
         </div>
@@ -100,6 +100,8 @@ export default function PlacePage() {
       onHide={() => setModalShow(false)}/>
     </div>
   <Loading/>
+  <Footer/>
+
     </div>
   )
 }

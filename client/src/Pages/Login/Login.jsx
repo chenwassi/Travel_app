@@ -1,4 +1,3 @@
-import "./Login.css";
 import React, { useEffect, useState } from 'react'
 import {useNavigate} from 'react-router-dom'
 import axios from 'axios'
@@ -38,9 +37,7 @@ export default function Login(props) {
   }
   const navigate = useNavigate()
    return (
-    //  <div className="h-screen flex">
-    //       <div className="container-image flex w-full  justify-center items-center bg-slate-700	 ">
-    //         <div className="log w-full px-8 md:px-32 lg:px-80">
+
       <Modal
       {...props}
       size="lg"
@@ -67,7 +64,6 @@ export default function Login(props) {
               <div className="flex justify-between mt-4">
               <span className="text-sm ml-2 hover:text-blue-500 cursor-pointer hover:-translate-y-1 duration-500 transition-all">Forgot Password ?</span>
 
-                {/* <a href="#" className="text-sm ml-2 hover:text-blue-500 cursor-pointer hover:-translate-y-1 duration-500 transition-all">Don't have an account yet?</a> */}
                 <a href="#" variant="primary" onClick={() => setModalShow(true)}>
                 Don't have an account yet?</a>
                  <Register 
@@ -78,10 +74,5 @@ export default function Login(props) {
             </form>
             </Modal>
             
-            // </div>
-          //  {/* <AdditionalContentExample/> */}
-      //     </div>  
-    // </div>
-
   )
 }
