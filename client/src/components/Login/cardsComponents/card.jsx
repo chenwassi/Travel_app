@@ -31,11 +31,11 @@ window.scroll({top:0,behavior:'smooth'})
         </Typography>
       </CardContent>
       <CardActions>
-        <Button onClick={()=>{navigate('/PlacePage');scroll()}} size="small">learn more</Button>
         <Button onClick={()=>{
-        navigate(`/Map/${coords[0]}/${coords[1]}`)
-        scroll()}} 
-        size ="small">map view</Button>
+          navigate(`/Map/${coords[0]}/${coords[1]}`)
+          scroll()}} 
+        size ="small">לצפייה במפה</Button>
+          <Button onClick={()=>{navigate('/PlacePage');scroll()}} size="small">פרטים נוספים</Button>
      </CardActions>
     </Card>
  )}

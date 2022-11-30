@@ -19,4 +19,5 @@ const addPlace = async(obj)=>{
     await data.save()
     return 'added'
 }
+
 module.exports = {allData,getById,addPlace}

@@ -40,7 +40,7 @@ const nameFromLocal = localStorage.getItem('userName')
                     </small>
                   </span>
                 </div>
-
+                 
                 {/* <small><span className="date">{format()}</span></small> */}
               </div>
 

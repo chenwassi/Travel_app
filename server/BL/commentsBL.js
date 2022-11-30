@@ -18,5 +18,8 @@ const newObj = new commentsModel({
 await newObj.save()
 return 'update'
 }
+const updatePost= async (id,obj)=>{
+return await commentsModel.findByIdAndUpdate(id,obj)
+}
 
-module.exports = {allData,editComment,addcomment,removeComment}
+module.exports = {allData,editComment,addcomment,removeComment,updatePost}

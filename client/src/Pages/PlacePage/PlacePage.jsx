@@ -11,11 +11,9 @@ import Navbar from '../Navbar/Navbar'
 import Footer from "../Footer/Footer";
 import MyVerticallyCenteredModal from '../AddComment/AddComment';
 import ReactPlayer from 'react-player'
-// import PlaceInfo from '../PlaceInfo/PlaceInfo';
 import Loading from '../../components/Login/Loading/Loading';
 
 export default function PlacePage() {
-    const navigate = useNavigate()
     const [modalShow, setModalShow] =useState(false);
     const [placeData ,setPlaceData] = useState({image:[''],info:'',location:'',name:'',video:'',text:'',ways:'',centers:''})
     const [commentsData ,setCommentsData] = useState([])
@@ -38,7 +36,7 @@ export default function PlacePage() {
       displayComment()
     },[commentsData])
   return (
-      <div className='place-page-container'>
+      <div className ='place-page-container'>
         <Navbar/>
         <div className='player d-md-block d-none'>
           <div className='BorderBox  w-100 h-100'></div>
@@ -48,7 +46,7 @@ export default function PlacePage() {
           <h6>{placeData.info}</h6>
           </div>
           <div className='player-video'>
-            {placeData?.video?<ReactPlayer muted={true} controls={false} playing={true} loop={true} width={'100vw'}height={'80vh'} url={placeData?.video}/>:<img className='image-bg'src={placeData?.image[1]} width={'80vw'} height={'60vh'}/>}
+          {placeData?.video?<ReactPlayer muted={true} controls={false} playing={true} loop={true} width={'100vw'}height={'80vh'} url={placeData?.video}/>:<img className='image-bg'src={placeData?.image[1]} width={'80vw'} height={'60vh'}/>}
         </div>
         </div>
         <div className='Carousel w-100 m-auto  d-md-none d-flex'>
@@ -83,7 +81,6 @@ export default function PlacePage() {
         </div>
     </div>
 
-        {/* <h5> Unread comments(0) </h5> */}
        {commentsData?.map(({_id,placeId,userName,text})=>{
         if(placeId == id){
           return <Comments key={_id} name={userName} text={text} id={_id} />

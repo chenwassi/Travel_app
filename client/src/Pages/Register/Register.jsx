@@ -15,10 +15,12 @@ import {
   Checkbox,
 } from '@mui/material';
 import { useForm } from "react-hook-form";
+import { useNavigate } from 'react-router-dom';
 
 
 
 export default function Register(props) {
+  const navigate = useNavigate()
   const {register,handleSubmit,formState: { errors }} = useForm();
     const [newUser,setNewUser] = useState({firstName: '', lastName: '', userName: '', email: '',password:'',passwordConfirm:''})
     const [userData,setUserdate]=useState([])
@@ -41,16 +43,11 @@ export default function Register(props) {
   }
   const checkUserUnique = (obj)=>{
     const checkUserName = userData?.find(userName=> userName.userName == newUser.userName)
-    console.log(userData);
-    console.log(checkUserName);
       if(newUser.password == newUser.passwordConfirm){
-        console.log('match');
         if(checkUserName){
-          console.log('user exist');
         }else{
           addNewUser(obj)
-          console.log(obj);
-        }
+          navigate('/HomePage')  }
       }else{
         
         console.log('pass dont match');
@@ -74,7 +71,6 @@ export default function Register(props) {
           </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-       {/* <div className='d-flex flex-column'> */}
        
         <TextField 
         onChangeCapture={handleInput}
@@ -90,7 +86,7 @@ export default function Register(props) {
         <TextField 
         onChangeCapture={handleInput}
           id="outlined-basic"
-          label="Last Name"
+          label="Last Name" 
           variant="outlined"
           fullWidth
           name="lastName"
@@ -111,7 +107,6 @@ export default function Register(props) {
          
         />
      
-        {/*  */}
         <TextField
         onChangeCapture={handleInput}
           id="outlined-basic"
@@ -124,7 +119,6 @@ export default function Register(props) {
           helperText={errors.email?.message}
         />
 
-        {/*  */}
         <TextField onChangeCapture={handleInput}
           name="password"
           id="outlined-basic"
@@ -149,7 +143,6 @@ export default function Register(props) {
           helperText={errors.passwordConfirm?.message}
         />
      
-{/* Radio button */}
         <FormControl error={Boolean(errors.gender)} >
           <FormLabel component="legend"> Choose Your Gender </FormLabel>
           <RadioGroup row aria-label="gender" name="gender">
@@ -179,7 +172,6 @@ export default function Register(props) {
           <FormHelperText style={{color:'#d32f2f'}}>{errors.gender?.message}</FormHelperText>
         </FormControl>
         <div className="clearfix"></div>
-{/* Check box */}
         <FormGroup 
           error={Boolean(errors.tnc)}
           style={{ display: "block", marginTop: "17px" }}
@@ -198,7 +190,6 @@ export default function Register(props) {
         <Button onClick={()=>{checkUserUnique(newUser)}} variant="contained" color="primary" type="submit" className="btns">
             create new account
           </Button>
-          {/* <Button variant="contained" color="primary" type="submit" onClick={props.onHide}>Close</Button> */}
           </Modal.Footer>
           </form>
           </Modal>
@@ -208,13 +199,7 @@ export default function Register(props) {
       
       );
     }
-         {/* <TextField  onChange={handleInput} name='firstName' label="firstName"/>
-             <TextField  onChange={handleInput} name='lastName' label="lastName"/>
-             <TextField  onChange={handleInput} name='userName' label="userName"/>
-             <TextField  onChange={handleInput} name='email' label="email"/>
-             <TextField  onChange={handleInput}  name='password'  htmlFor="outlined-adornment-password" label="password"  type="password"/>
-             <TextField  onChange={handleInput} name='passwordConfirm' htmlFor="outlined-adornment-password" label="passwordConfirm"  type="password"/> */}
-            {/* </div> */}
+         
     
     
    

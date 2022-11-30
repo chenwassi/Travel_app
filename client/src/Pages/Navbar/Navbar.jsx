@@ -18,12 +18,12 @@ function NavbarContainer() {
     }
     else{
       setChangeCss(false)
-    }
-    
+    } 
   };
   const scroll = ()=>{
     window.scroll({top:0,behavior:'smooth'})
     }
+
   window.addEventListener('scroll',changeValueScroll)
   return (
     <Navbar className={chagneCss?"navbar fixed-top navbar-expand-lg scrolled transition":"transition"} expand="lg" >
@@ -36,7 +36,7 @@ function NavbarContainer() {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-      <Dropdown>
+      <Dropdown >
       <Dropdown.Toggle className='user-logout text-light d-md-flex d-none align-items-center' id="dropdown-basic">
         <div><FaUserAlt/></div>
        {localStorage.getItem('name')}
@@ -47,8 +47,8 @@ function NavbarContainer() {
       </Dropdown>
           </Nav>
           <div className='d-md-flex justify-content-md-around align-items-md-center w-25'>
-            <Nav.Link className='text-light' onClick={()=>navigate('/Map')}>מפה</Nav.Link>
-            <Nav.Link className='text-light' onClick={()=>navigate('/addPlace')}>עוד משהו</Nav.Link>  
+            <Nav.Link className='text-light' onClick={()=>{navigate('/Map/34.8112720/31.8927730');}}>מפה</Nav.Link>
+            <Nav.Link className='text-light' onClick={()=>navigate('/HomePage/allData')}>לכל המקומות</Nav.Link>  
             <Nav.Link className='text-light' onClick={()=>navigate('/HomePage')}>דף הבית</Nav.Link>
           </div>
         </Navbar.Collapse>

@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import "./HomePage.css";
 import axios from "axios";
 import CardComponent from "../../components/Login/cardsComponents/card";
-import { useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Navbar from "../Navbar/Navbar";
 import Button from "react-bootstrap/Button";
 import Footer from "../Footer/Footer";
+import { Outlet } from "react-router-dom";
 
 export default function HomePage() {
   const [placeData, setPlaceData] = useState([]);
@@ -14,7 +14,9 @@ export default function HomePage() {
 
   const displayplacesData = async () => {
     const { data } = await axios.get("http://localhost:8800/places");
-    setPlaceData(data);
+    const topPlaces = data.filter(({recommended})=>recommended)
+    console.log(topPlaces);
+    setPlaceData(topPlaces);
   };
   const findById = (id) => {
     sessionStorage.setItem("placeId", id);
@@ -43,7 +45,6 @@ export default function HomePage() {
   return (
     <div className="home-Page-container ">
       <Navbar />
-      {/* <ReactPlayer youtube muted={true} controls={false} playing={true} loop={true} width={'100vw'}height={'80vh'} url={'https://www.youtube.com/watch?v=LER7lcnzoDU&t=737s&ab_channel=BeautifulRelaxation'}/> */}
       <div className="backgroundImage"></div>
       <Form className="d-flex w-50 m-auto mt-5">
         <Button
@@ -62,16 +63,15 @@ export default function HomePage() {
           aria-label="Search"
         />
       </Form>
-
-      <div className="d-md-flex flex-wrap justify-content-around mt-5 container">
+      <div className="d-md-flex flex-wrap justify-content-around mt-5 mb-5 container">
         {placeData.map(({ _id, name, info, location, image, coords }) => {
           return (
             <div
-              onClick={() => {
-                findById(_id);
-              }}
-              key={_id}
-              className="m-2"
+            onClick={() => {
+              findById(_id);
+            }}
+            key={_id}
+            className="m-2"
             >
               <CardComponent
                 name={name}
@@ -79,11 +79,12 @@ export default function HomePage() {
                 location={location}
                 image={image[0]}
                 coords={coords}
-              />
+                />
             </div>
           );
         })}
       </div>
+      <Outlet/>
       <Footer/>
     </div>
   );
